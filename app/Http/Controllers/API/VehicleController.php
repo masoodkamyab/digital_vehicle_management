@@ -6,10 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\VehicleAssignWorkerRequest;
 use App\Http\Requests\VehicleRequest;
 use App\Http\Resources\VehicleResource;
+use App\Imports\VehiclesImport;
 use App\Models\Vehicle;
-
+use Maatwebsite\Excel\Facades\Excel;
 class VehicleController extends Controller
 {
+
+    public function import()
+    {
+        Excel::import(new VehiclesImport, storage_path('/imports/vehicles.csv'));
+
+        return true;
+    }
+
     public function index()
     {
         return VehicleResource::collection(Vehicle::all());

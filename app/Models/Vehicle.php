@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'date_acquired', 'parking_location', 'license_plate_number'];
+    protected $fillable = ['name', 'date_acquired', 'parking_location', 'license_plate_number','worker_id'];
     public function inspections()
     {
         return $this->hasMany(Inspection::class);

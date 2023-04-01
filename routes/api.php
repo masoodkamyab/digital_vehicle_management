@@ -26,3 +26,6 @@ Route::resource('/workers', \App\Http\Controllers\API\WorkerController::class);
 Route::resource('/vehicles', \App\Http\Controllers\API\VehicleController::class);
 Route::patch('/vehicle-assign-workers', [\App\Http\Controllers\API\VehicleController::class, 'vehicleAssignWorker']);
 Route::resource('/inspections', \App\Http\Controllers\API\InspectionController::class);
+
+Route::get('/import-vehicles',[\App\Http\Controllers\API\VehicleController::class,'import']);
+Route::get('/import-inspections',[\App\Http\Controllers\API\InspectionController::class,'import']);

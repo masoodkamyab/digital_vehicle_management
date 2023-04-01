@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkerRequest;
 use App\Http\Resources\WorkerResource;
 use App\Models\Worker;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class WorkerController extends Controller
 {

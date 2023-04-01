@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\InspectionResource;
+use App\Http\Resources\VehicleResource;
+use App\Http\Resources\WorkerResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,10 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(
-            'App\Repositories\PostRepositoryInterface',
-            'App\Repositories\PostRepository'
-        );
+
     }
 
     /**
@@ -22,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        WorkerResource::withoutWrapping();
+        VehicleResource::withoutWrapping();
+        InspectionResource::withoutWrapping();
     }
 }

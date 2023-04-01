@@ -5,11 +5,20 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InspectionRequest;
 use App\Http\Resources\InspectionResource;
+use App\Imports\InspectionsImport;
 use App\Models\Inspection;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InspectionController extends Controller
 {
+    public function import()
+    {
+        Excel::import(new InspectionsImport, storage_path('/imports/inspections.csv'));
+
+        return true;
+    }
+
     public function index()
     {
         return InspectionResource::collection(Inspection::all());
