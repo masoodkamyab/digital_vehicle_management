@@ -1,0 +1,108 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Vehicle Management Service",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/vehicle-management/api/workers": {
+            "get": {
+                "tags": [
+                    "Workers"
+                ],
+                "summary": "Retrieve a list of all workers",
+                "description": "Returns a list of all workers in the database",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "List of workers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WorkerResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicle-management/api/workers/{worker_id}": {
+            "get": {
+                "tags": [
+                    "Workers"
+                ],
+                "summary": "Get a worker by ID",
+                "operationId": "getWorkerById",
+                "parameters": [
+                    {
+                        "name": "worker_id",
+                        "in": "path",
+                        "description": "ID of the worker",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WorkerResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "WorkerResource": {
+                "properties": {
+                    "id": {
+                        "description": "The ID of the worker",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "The name of the worker",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "vehicles": {
+                        "description": "An array of the worker's vehicles",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "description": "The ID of the vehicle",
+                                    "type": "integer",
+                                    "example": 1
+                                },
+                                "name": {
+                                    "description": "The name of the vehicle",
+                                    "type": "string",
+                                    "example": "Toyota"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

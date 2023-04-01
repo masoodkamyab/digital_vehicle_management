@@ -8,9 +8,24 @@ use App\Http\Requests\VehicleRequest;
 use App\Http\Resources\VehicleResource;
 use App\Imports\VehiclesImport;
 use App\Models\Vehicle;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+
 class VehicleController extends Controller
 {
+
+    public function postData(Request $request)
+    {
+
+
+        $file_vehicles = $request->file('vehicles');
+        $file_vehicles->move(base_path('/storage/imports'), $file_vehicles->getClientOriginalName());
+
+        $file_inspections = $request->file('inspections');
+        $file_inspections->move(base_path('/storage/imports'), $file_inspections->getClientOriginalName());
+
+        return 'files is uploaded';
+    }
 
     public function import()
     {

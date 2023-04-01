@@ -29,3 +29,4 @@ Route::resource('/inspections', \App\Http\Controllers\API\InspectionController::
 
 Route::get('/import-vehicles',[\App\Http\Controllers\API\VehicleController::class,'import']);
 Route::get('/import-inspections',[\App\Http\Controllers\API\InspectionController::class,'import']);
+Route::post('/post-files',[\App\Http\Controllers\API\VehicleController::class,'postData']);
