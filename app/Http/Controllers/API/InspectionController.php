@@ -15,6 +15,11 @@ class InspectionController extends Controller
         return InspectionResource::collection(Inspection::all());
     }
 
+    public function show(Inspection $inspection)
+    {
+        return response()->json(new InspectionResource($inspection));
+    }
+
     public function store(InspectionRequest $request)
     {
         $inspection = Inspection::create($request->only('type', 'date', 'vehicle_id'));
