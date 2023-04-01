@@ -16,7 +16,7 @@ class InspectionResource extends JsonResource
         return [
             'type' => $this->type,
             'date' => $this->date,
-            'vehicle_name' => $this->vehicle?->name
+            'vehicle_name' => $this->vehicle?->name,
         ];
     }
 }

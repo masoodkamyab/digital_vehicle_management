@@ -19,7 +19,8 @@ class VehicleResource extends JsonResource
             'date_acquired' => $this->date_acquired,
             'parking_location' => $this->parking_location,
             'license_plate_number' => $this->license_plate_number,
-            'worker_name' => $this->worker?->name
+            'worker_name' => $this->worker?->name,
+            'inspections' => $this->inspections,
         ];
     }
 }
